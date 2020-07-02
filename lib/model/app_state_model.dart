@@ -2,10 +2,9 @@ import 'package:flutter/foundation.dart' as foundation;
 import 'product.dart';
 import '../repository/products_repository.dart';
 
-double _salesTaxRate = 0.06;
-double _shippingCostPerItem = 7;
-
 class AppStateModel extends foundation.ChangeNotifier {
+  double _salesTaxRate = 0.06;
+  double _shippingCostPerItem = 7;
   // All the available products.
   List<Product> _availableProducts;
 
