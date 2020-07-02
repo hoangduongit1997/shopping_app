@@ -117,7 +117,7 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
               ],
             ),
             Text(
-              DateFormat.yMMMd().add_jm().format(dateTime),
+              DateFormat("HH:mm dd/MM/yyyy").format(dateTime),
               style: Styles.deliveryTime,
             ),
           ],
