@@ -8,25 +8,24 @@ enum Category {
 }
 
 class Product {
-  const Product({
+  Product({
     @required this.category,
     @required this.id,
-    @required this.isFeatured,
+    this.isChoose = false,
     @required this.name,
     @required this.price,
   })  : assert(category != null),
         assert(id != null),
-        assert(isFeatured != null),
+        assert(isChoose != null),
         assert(name != null),
         assert(price != null);
 
   final Category category;
   final int id;
-  final bool isFeatured;
+  bool isChoose;
   final String name;
   final int price;
-
-  String get assetName => '0-0.jpg';
+  String get assetName => '$id-0.jpg';
   String get assetPackage => 'shrine_images';
 
   @override

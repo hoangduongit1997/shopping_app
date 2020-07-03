@@ -5,6 +5,9 @@ import '../repository/products_repository.dart';
 class AppStateModel extends foundation.ChangeNotifier {
   double _salesTaxRate = 0.06;
   double _shippingCostPerItem = 7;
+  DateTime dateTimeRecieve = DateTime.now();
+  // Get datetime recieve in cart
+  DateTime get dateTimeRecieveCard => dateTimeRecieve;
   // All the available products.
   List<Product> _availableProducts;
 
@@ -80,13 +83,13 @@ class AppStateModel extends foundation.ChangeNotifier {
   }
 
   // Adds a product to the cart.
-  void addProductToCart(int productId) {
+  void addProductToCart(int productId, int index) {
     if (!_productsInCart.containsKey(productId)) {
       _productsInCart[productId] = 1;
     } else {
       _productsInCart[productId]++;
     }
-
+    _availableProducts[index].isChoose = true;
     notifyListeners();
   }
 
@@ -122,6 +125,12 @@ class AppStateModel extends foundation.ChangeNotifier {
 
   void setCategory(Category newCategory) {
     _selectedCategory = newCategory;
+    notifyListeners();
+  }
+
+  // Set datetime recieve in card
+  void setDateTimeRecieveInCard(DateTime dateTime) {
+    dateTimeRecieve = dateTime;
     notifyListeners();
   }
 }

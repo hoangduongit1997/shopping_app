@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/model/app_state_model.dart';
 import 'package:intl/intl.dart';
@@ -19,7 +20,7 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
   String email;
   String location;
   String pin;
-  DateTime dateTime = DateTime.now();
+
   final _currencyFormat = NumberFormat.currency(symbol: '\$');
 
   Widget _buildNameField() {
@@ -95,7 +96,7 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
     );
   }
 
-  Widget _buildDateAndTimePicker(BuildContext context) {
+  Widget _buildDateAndTimePicker(BuildContext context, AppStateModel model) {
     return Column(
       children: <Widget>[
         Row(
@@ -117,7 +118,7 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
               ],
             ),
             Text(
-              DateFormat("HH:mm dd/MM/yyyy").format(dateTime),
+              DateFormat("HH:mm dd/MM/yyyy").format(model.dateTimeRecieveCard),
               style: Styles.deliveryTime,
             ),
           ],
@@ -126,11 +127,10 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
           height: _kDateTimePickerHeight,
           child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.dateAndTime,
-            initialDateTime: dateTime,
+            use24hFormat: true,
+            initialDateTime: model.dateTimeRecieveCard,
             onDateTimeChanged: (newDateTime) {
-              setState(() {
-                dateTime = newDateTime;
-              });
+              model.setDateTimeRecieveInCard(newDateTime);
             },
           ),
         ),
@@ -162,7 +162,7 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
           case 3:
             return Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-              child: _buildDateAndTimePicker(context),
+              child: _buildDateAndTimePicker(context, model),
             );
           default:
             if (model.productsInCart.length > productIndex) {
