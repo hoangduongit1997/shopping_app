@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/screen/home_screen.dart';
+import 'package:shopping_app/screen/login_screen.dart';
 import 'package:shopping_app/screen/splash_screen.dart';
 import 'package:shopping_app/widget/detail_product.dart';
 
@@ -23,6 +24,13 @@ class RouteGenerator {
             ProductDetail(
               product: settings.arguments,
             ),
+          );
+        }
+      case "/login":
+        {
+          return buildRoute(
+            settings,
+            LoginScreen(),
           );
         }
       default:
