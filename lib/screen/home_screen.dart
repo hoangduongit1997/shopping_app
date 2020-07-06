@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:shopping_app/screen/home_tab/account_tab.dart';
 import 'package:shopping_app/screen/home_tab/product_list_tab.dart';
 import 'package:shopping_app/screen/home_tab/search_tab.dart';
 import 'package:shopping_app/screen/home_tab/shopping_cart_tab.dart';
@@ -20,6 +21,10 @@ class CupertinoStoreHomePage extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.shopping_cart),
             title: Text('Cart'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.person),
+            title: Text('Account'),
           ),
         ],
       ),
@@ -44,6 +49,13 @@ class CupertinoStoreHomePage extends StatelessWidget {
             returnValue = CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
                 child: ShoppingCartTab(),
+              );
+            });
+            break;
+          case 3:
+            returnValue = CupertinoTabView(builder: (context) {
+              return CupertinoPageScaffold(
+                child: AccountTab(),
               );
             });
             break;

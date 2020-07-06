@@ -210,17 +210,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         SizedBox(height: 20.0),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "Don't have an account? Sign up now",
-                              style: TextStyle(
-                                color: Colors.grey,
-                                //fontWeight: FontWeight.bold
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed("/signup");
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "Don't have an account? Sign up now",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  //fontWeight: FontWeight.bold
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),
